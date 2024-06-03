@@ -9,8 +9,8 @@ public class Bedroom {
 
     @Getter
     private Long id;
-    private int type_bedroom_id;
-    private int worker_id;
+    private int typeBedroomId;
+    private int workerId;
     private int totalBeds;
     private int totalBathroom;
     private int totalTelevision;
@@ -19,8 +19,8 @@ public class Bedroom {
     public Bedroom()
     {
         this.id = 0L;
-        this.type_bedroom_id = 0;
-        this.worker_id = 0;
+        this.typeBedroomId = 0;
+        this.workerId = 0;
         this.totalBeds = 0;
         this.totalBathroom = 0;
         this.totalTelevision = 0;
@@ -28,8 +28,8 @@ public class Bedroom {
     }
     public Bedroom(int type_bedroom_id, int worker_id, int totalBeds,
                    int totalBathroom, int totalTelevision, String state){
-        this.type_bedroom_id = type_bedroom_id;
-        this.worker_id = worker_id;
+        this.typeBedroomId = type_bedroom_id;
+        this.workerId = worker_id;
         this.totalBeds = totalBeds;
         this.totalBathroom = totalBathroom;
         this.totalTelevision = totalTelevision;
@@ -38,8 +38,8 @@ public class Bedroom {
 
     public Bedroom(CreateBedroomCommand command)
     {
-        this.type_bedroom_id = command.type_bedroom_id();
-        this.worker_id = command.worker_id();
+        this.typeBedroomId = command.typeBedroomId();
+        this.workerId = command.workerId();
         this.totalBeds = command.totalBeds();
         this.totalBathroom = command.totalBathroom();
         this.totalTelevision = command.totalTelevision();
@@ -47,8 +47,8 @@ public class Bedroom {
     }
 
     public Long GetId() { return id; }
-    public int GetTypeBedroomId() { return type_bedroom_id; }
-    public int GetWorkerId() { return worker_id; }
+    public int GetTypeBedroomId() { return typeBedroomId; }
+    public int GetWorkerId() { return workerId; }
     public int GetTotalBeds() { return totalBeds; }
     public int GetTotalBathroom() { return totalBathroom; }
     public int GetTotalTelevision() { return totalTelevision; }
