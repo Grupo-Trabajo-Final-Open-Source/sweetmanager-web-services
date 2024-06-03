@@ -10,7 +10,7 @@ import java.util.Date;
 public class Booking {
 
     @Getter
-    private int id;
+    private Long id;
     private int clientId;
     private int bedroomId;
     private Date startDate;
@@ -20,7 +20,7 @@ public class Booking {
 
     public Booking()
     {
-        this.id = 0;
+        this.id = 0L;
         this.clientId = 0;
         this.bedroomId = 0;
         this.startDate = new Date();
@@ -51,7 +51,7 @@ public class Booking {
         this.state = command.state();
     }
 
-    public int GetId() { return id; }
+    public Long GetId() { return id; }
     public int GetClientId() { return clientId; }
     public int GetBedroomId() { return bedroomId; }
     public Date GetStartDate() { return startDate; }

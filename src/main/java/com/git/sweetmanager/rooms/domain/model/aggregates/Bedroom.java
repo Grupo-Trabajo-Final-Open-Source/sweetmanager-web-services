@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Bedroom {
 
     @Getter
-    private int id;
+    private Long id;
     private int type_bedroom_id;
     private int worker_id;
     private int totalBeds;
@@ -18,7 +18,7 @@ public class Bedroom {
 
     public Bedroom()
     {
-        this.id = 0;
+        this.id = 0L;
         this.type_bedroom_id = 0;
         this.worker_id = 0;
         this.totalBeds = 0;
@@ -46,7 +46,7 @@ public class Bedroom {
         this.state = command.state();
     }
 
-    public int GetId() { return id; }
+    public Long GetId() { return id; }
     public int GetTypeBedroomId() { return type_bedroom_id; }
     public int GetWorkerId() { return worker_id; }
     public int GetTotalBeds() { return totalBeds; }
