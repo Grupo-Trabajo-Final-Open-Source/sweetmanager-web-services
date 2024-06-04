@@ -5,10 +5,12 @@ import com.git.sweetmanager.payment.domain.model.queries.GetAllSubscriptionsQuer
 import com.git.sweetmanager.payment.domain.model.queries.GetSubscriptionByIdQuery;
 import com.git.sweetmanager.payment.domain.services.SubscriptionQueryService;
 import com.git.sweetmanager.payment.infrastructure.persistence.mongo.repositories.SubscriptionRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class SubscriptionQueryServiceImpl implements SubscriptionQueryService {
 
     private final SubscriptionRepository subscriptionRepository;
