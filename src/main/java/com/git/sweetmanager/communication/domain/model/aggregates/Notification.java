@@ -14,9 +14,6 @@ public class Notification extends AuditableAbstractAggregateRoot<Notification> {
 
     // Attributes
 
-    @Id
-    private Long _id;
-
     private String  title;
 
     private LocalDate date;
