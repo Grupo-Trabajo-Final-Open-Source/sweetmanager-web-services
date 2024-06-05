@@ -1,6 +1,6 @@
 package com.git.sweetmanager.payment.domain.model.aggregates;
 
-import com.git.sweetmanager.payment.domain.model.commands.CreateSubscriptionCommand;
+import com.git.sweetmanager.payment.domain.model.commands.subscription.CreateSubscriptionCommand;
 import com.git.sweetmanager.shared.domain.aggregates.AuditableAbstractAggregateRoot;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Subscription extends AuditableAbstractAggregateRoot<Subscription> {
 
     // Attributes
-
     private String title;
 
     private Double price;

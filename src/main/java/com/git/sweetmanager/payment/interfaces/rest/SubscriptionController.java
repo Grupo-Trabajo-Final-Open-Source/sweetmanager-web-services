@@ -1,10 +1,10 @@
 package com.git.sweetmanager.payment.interfaces.rest;
 
-import com.git.sweetmanager.payment.domain.model.commands.CreateSubscriptionCommand;
-import com.git.sweetmanager.payment.domain.model.queries.GetAllSubscriptionsQuery;
-import com.git.sweetmanager.payment.domain.model.queries.GetSubscriptionByIdQuery;
-import com.git.sweetmanager.payment.domain.services.SubscriptionCommandService;
-import com.git.sweetmanager.payment.domain.services.SubscriptionQueryService;
+import com.git.sweetmanager.payment.domain.model.commands.subscription.CreateSubscriptionCommand;
+import com.git.sweetmanager.payment.domain.model.queries.subscription.GetAllSubscriptionsQuery;
+import com.git.sweetmanager.payment.domain.model.queries.subscription.GetSubscriptionByIdQuery;
+import com.git.sweetmanager.payment.domain.services.subscription.SubscriptionCommandService;
+import com.git.sweetmanager.payment.domain.services.subscription.SubscriptionQueryService;
 import com.git.sweetmanager.payment.interfaces.rest.resources.SubscriptionResource;
 import com.git.sweetmanager.payment.interfaces.rest.transform.CreateSubscriptionCommandFromResourceAssembler;
 import com.git.sweetmanager.payment.interfaces.rest.transform.SubscriptionResourceFromEntityAssembler;

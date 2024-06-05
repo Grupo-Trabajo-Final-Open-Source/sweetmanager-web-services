@@ -1,8 +1,8 @@
 package com.git.sweetmanager.payment.application.internal.commandservices;
 
 import com.git.sweetmanager.payment.domain.model.aggregates.Subscription;
-import com.git.sweetmanager.payment.domain.model.commands.CreateSubscriptionCommand;
-import com.git.sweetmanager.payment.domain.services.SubscriptionCommandService;
+import com.git.sweetmanager.payment.domain.model.commands.subscription.CreateSubscriptionCommand;
+import com.git.sweetmanager.payment.domain.services.subscription.SubscriptionCommandService;
 import com.git.sweetmanager.payment.infrastructure.persistence.mongo.repositories.SubscriptionRepository;
 
 import org.springframework.stereotype.Service;

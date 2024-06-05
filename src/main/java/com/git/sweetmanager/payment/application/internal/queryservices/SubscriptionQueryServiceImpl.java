@@ -1,9 +1,9 @@
 package com.git.sweetmanager.payment.application.internal.queryservices;
 
 import com.git.sweetmanager.payment.domain.model.aggregates.Subscription;
-import com.git.sweetmanager.payment.domain.model.queries.GetAllSubscriptionsQuery;
-import com.git.sweetmanager.payment.domain.model.queries.GetSubscriptionByIdQuery;
-import com.git.sweetmanager.payment.domain.services.SubscriptionQueryService;
+import com.git.sweetmanager.payment.domain.model.queries.subscription.GetAllSubscriptionsQuery;
+import com.git.sweetmanager.payment.domain.model.queries.subscription.GetSubscriptionByIdQuery;
+import com.git.sweetmanager.payment.domain.services.subscription.SubscriptionQueryService;
 import com.git.sweetmanager.payment.infrastructure.persistence.mongo.repositories.SubscriptionRepository;
 import org.springframework.stereotype.Service;
 

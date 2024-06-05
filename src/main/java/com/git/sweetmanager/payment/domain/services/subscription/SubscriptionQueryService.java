@@ -1,8 +1,8 @@
-package com.git.sweetmanager.payment.domain.services;
+package com.git.sweetmanager.payment.domain.services.subscription;
 
 import com.git.sweetmanager.payment.domain.model.aggregates.Subscription;
-import com.git.sweetmanager.payment.domain.model.queries.GetAllSubscriptionsQuery;
-import com.git.sweetmanager.payment.domain.model.queries.GetSubscriptionByIdQuery;
+import com.git.sweetmanager.payment.domain.model.queries.subscription.GetAllSubscriptionsQuery;
+import com.git.sweetmanager.payment.domain.model.queries.subscription.GetSubscriptionByIdQuery;
 
 import java.util.List;
 import java.util.Optional;
