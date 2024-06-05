@@ -5,9 +5,9 @@ import com.git.sweetmanager.payment.domain.model.queries.subscription.GetAllSubs
 import com.git.sweetmanager.payment.domain.model.queries.subscription.GetSubscriptionByIdQuery;
 import com.git.sweetmanager.payment.domain.services.subscription.SubscriptionCommandService;
 import com.git.sweetmanager.payment.domain.services.subscription.SubscriptionQueryService;
-import com.git.sweetmanager.payment.interfaces.rest.resources.SubscriptionResource;
-import com.git.sweetmanager.payment.interfaces.rest.transform.CreateSubscriptionCommandFromResourceAssembler;
-import com.git.sweetmanager.payment.interfaces.rest.transform.SubscriptionResourceFromEntityAssembler;
+import com.git.sweetmanager.payment.interfaces.rest.resources.subscription.SubscriptionResource;
+import com.git.sweetmanager.payment.interfaces.rest.transform.subscription.CreateSubscriptionCommandFromResourceAssembler;
+import com.git.sweetmanager.payment.interfaces.rest.transform.subscription.SubscriptionResourceFromEntityAssembler;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

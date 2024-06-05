@@ -20,7 +20,7 @@ public class Payment extends AuditableAbstractAggregateRoot<Payment> {
     private String email;
 
     // Constructor
-    public Payment(int idTitular, String titularName, String targetAccount, String expirationDate, Integer cvc, String email) {
+    public Payment(int idTitular, String titularName, String targetAccount, String expirationDate, int cvc, String email) {
         this.idTitular = idTitular;
         this.titularName = titularName;
         this.targetAccount = targetAccount;

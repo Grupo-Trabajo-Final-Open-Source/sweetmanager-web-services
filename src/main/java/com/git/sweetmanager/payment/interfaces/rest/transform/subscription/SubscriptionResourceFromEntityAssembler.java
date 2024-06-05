@@ -1,7 +1,7 @@
-package com.git.sweetmanager.payment.interfaces.rest.transform;
+package com.git.sweetmanager.payment.interfaces.rest.transform.subscription;
 
 import com.git.sweetmanager.payment.domain.model.aggregates.Subscription;
-import com.git.sweetmanager.payment.interfaces.rest.resources.SubscriptionResource;
+import com.git.sweetmanager.payment.interfaces.rest.resources.subscription.SubscriptionResource;
 
 public class SubscriptionResourceFromEntityAssembler {
 
