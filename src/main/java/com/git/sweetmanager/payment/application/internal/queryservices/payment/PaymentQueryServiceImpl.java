@@ -28,4 +28,6 @@ public class PaymentQueryServiceImpl implements PaymentQueryService {
     public Optional<Payment> handle(GetPaymentByIdQuery query) {
         return paymentRepository.findById(query.paymentId());
     }
+
+
 }
