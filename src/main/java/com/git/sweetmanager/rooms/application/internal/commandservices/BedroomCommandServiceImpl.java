@@ -20,11 +20,17 @@ public class BedroomCommandServiceImpl implements BedroomCommandService {
 
     @Override
     public Optional<Bedroom> handle(CreateBedroomCommand command) {
-        return Optional.empty();
+
+        repository.save(new Bedroom(command));
+
+        return Optional.of(new Bedroom(command));
     }
 
     @Override
     public Optional<Bedroom> handle(UpdateBedroomCommand command) {
-        return Optional.empty();
+
+        repository.save(new Bedroom());
+
+        return Optional.of(new Bedroom());
     }
 }

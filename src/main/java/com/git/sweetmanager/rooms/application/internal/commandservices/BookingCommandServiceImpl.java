@@ -20,11 +20,17 @@ public class BookingCommandServiceImpl implements BookingCommandService {
 
     @Override
     public Optional<Booking> handle(CreateBookingCommand command) {
-        return Optional.empty();
+
+        bookingRepository.save(new Booking(command));
+
+        return Optional.of(new Booking(command));
     }
 
     @Override
     public Optional<Booking> handle(UpdateBookingCommand command) {
-        return Optional.empty();
+
+        bookingRepository.save(new Booking());
+
+        return Optional.of(new Booking());
     }
 }

@@ -9,12 +9,12 @@ public class Bedroom {
 
     @Getter
     private Long id;
-    private int typeBedroomId;
-    private int workerId;
-    private int totalBeds;
-    private int totalBathroom;
-    private int totalTelevision;
-    private String state;
+    private final int typeBedroomId;
+    private final int workerId;
+    private final int totalBeds;
+    private final int totalBathroom;
+    private final int totalTelevision;
+    private final String state;
 
     public Bedroom()
     {

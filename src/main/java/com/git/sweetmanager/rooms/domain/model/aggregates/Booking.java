@@ -11,12 +11,12 @@ public class Booking {
 
     @Getter
     private Long id;
-    private int clientId;
-    private int bedroomId;
-    private Date startDate;
-    private Date finalDate;
-    private float totalPrice;
-    private String state;
+    private final int clientId;
+    private final int bedroomId;
+    private final Date startDate;
+    private final Date finalDate;
+    private final float totalPrice;
+    private final String state;
 
     public Booking()
     {
