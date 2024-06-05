@@ -32,6 +32,8 @@ public class SubscriptionCommandServiceImpl implements SubscriptionCommandServic
 
         var subscription = new Subscription(command);
 
+        subscriptionRepository.save(subscription);
+
         return Optional.of(subscription);
     }
 

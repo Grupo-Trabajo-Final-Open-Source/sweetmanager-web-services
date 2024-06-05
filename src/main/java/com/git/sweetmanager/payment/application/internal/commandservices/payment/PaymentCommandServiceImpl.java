@@ -38,6 +38,8 @@ public class PaymentCommandServiceImpl implements PaymentCommandService {
             throw new IllegalArgumentException("Email cannot be null or empty");
         }
 
+        paymentRepository.save(new Payment(command));
+
         return Optional.of(new Payment(command));
     }
 }
