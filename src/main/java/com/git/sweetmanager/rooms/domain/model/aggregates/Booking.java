@@ -1,16 +1,15 @@
 package com.git.sweetmanager.rooms.domain.model.aggregates;
 
 import com.git.sweetmanager.rooms.domain.model.commands.CreateBookingCommand;
+import com.git.sweetmanager.shared.domain.aggregates.AuditableAbstractAggregateRoot;
 import lombok.Getter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document
-public class Booking {
+@Document(collection = "bookings")
+public class Booking extends AuditableAbstractAggregateRoot<Booking> {
 
-    @Getter
-    private Long id;
     private final int clientId;
     private final int bedroomId;
     private final Date startDate;
@@ -20,7 +19,6 @@ public class Booking {
 
     public Booking()
     {
-        this.id = 0L;
         this.clientId = 0;
         this.bedroomId = 0;
         this.startDate = new Date();
@@ -51,7 +49,6 @@ public class Booking {
         this.state = command.state();
     }
 
-    public Long GetId() { return id; }
     public int GetClientId() { return clientId; }
     public int GetBedroomId() { return bedroomId; }
     public Date GetStartDate() { return startDate; }

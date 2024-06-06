@@ -5,7 +5,7 @@ import com.git.sweetmanager.rooms.interfaces.rest.resources.UpdateBookingResourc
 
 public class UpdateBookingCommandFromResourceAssembler {
 
-    public static UpdateBookingCommand updateBookingCommandFromResource(UpdateBookingResource resource) {
+    public static UpdateBookingCommand toCommandFromResource(UpdateBookingResource resource) {
         return new UpdateBookingCommand(resource.clientId());
     }
 }

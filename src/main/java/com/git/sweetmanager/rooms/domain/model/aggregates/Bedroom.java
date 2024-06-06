@@ -1,14 +1,12 @@
 package com.git.sweetmanager.rooms.domain.model.aggregates;
 
 import com.git.sweetmanager.rooms.domain.model.commands.CreateBedroomCommand;
-import lombok.Getter;
+import com.git.sweetmanager.shared.domain.aggregates.AuditableAbstractAggregateRoot;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
-public class Bedroom {
+@Document(collection = "bedrooms")
+public class Bedroom extends AuditableAbstractAggregateRoot<Bedroom> {
 
-    @Getter
-    private Long id;
     private final int typeBedroomId;
     private final int workerId;
     private final int totalBeds;
@@ -18,7 +16,6 @@ public class Bedroom {
 
     public Bedroom()
     {
-        this.id = 0L;
         this.typeBedroomId = 0;
         this.workerId = 0;
         this.totalBeds = 0;
@@ -46,7 +43,6 @@ public class Bedroom {
         this.state = command.state();
     }
 
-    public Long GetId() { return id; }
     public int GetTypeBedroomId() { return typeBedroomId; }
     public int GetWorkerId() { return workerId; }
     public int GetTotalBeds() { return totalBeds; }

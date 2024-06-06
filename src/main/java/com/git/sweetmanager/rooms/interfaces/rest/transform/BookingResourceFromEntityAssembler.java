@@ -7,7 +7,7 @@ public class BookingResourceFromEntityAssembler {
 
     public static BookingResource toResourceFromEntity(Booking entity) {
 
-        return new BookingResource(entity.GetId(), entity.GetClientId(),
+        return new BookingResource(entity.GetClientId(),
                 entity.GetBedroomId(), entity.GetStartDate(),
                 entity.GetFinalDate(), entity.GetTotalPrice(),
                 entity.GetState());

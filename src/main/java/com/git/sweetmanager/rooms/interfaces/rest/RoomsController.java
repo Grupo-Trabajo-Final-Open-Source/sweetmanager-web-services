@@ -2,26 +2,19 @@ package com.git.sweetmanager.rooms.interfaces.rest;
 
 import com.git.sweetmanager.rooms.domain.model.queries.GetAllBedroomsQuery;
 import com.git.sweetmanager.rooms.domain.model.queries.GetAllBookingsQuery;
+import com.git.sweetmanager.rooms.domain.model.queries.GetBedroomByIdQuery;
+import com.git.sweetmanager.rooms.domain.model.queries.GetBookingByIdQuery;
 import com.git.sweetmanager.rooms.domain.services.BedroomCommandService;
 import com.git.sweetmanager.rooms.domain.services.BedroomQueryService;
 import com.git.sweetmanager.rooms.domain.services.BookingCommandService;
 import com.git.sweetmanager.rooms.domain.services.BookingQueryService;
-import com.git.sweetmanager.rooms.interfaces.rest.resources.BedroomResource;
-import com.git.sweetmanager.rooms.interfaces.rest.resources.BookingResource;
-import com.git.sweetmanager.rooms.interfaces.rest.resources.CreateBedroomResource;
-import com.git.sweetmanager.rooms.interfaces.rest.resources.CreateBookingResource;
-import com.git.sweetmanager.rooms.interfaces.rest.transform.BedroomResourceFromEntityAssembler;
-import com.git.sweetmanager.rooms.interfaces.rest.transform.BookingResourceFromEntityAssembler;
-import com.git.sweetmanager.rooms.interfaces.rest.transform.CreateBedroomCommandFromResourceAssembler;
-import com.git.sweetmanager.rooms.interfaces.rest.transform.CreateBookingCommandFromResourceAssembler;
-import org.apache.coyote.Response;
+import com.git.sweetmanager.rooms.interfaces.rest.resources.*;
+import com.git.sweetmanager.rooms.interfaces.rest.transform.*;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/v1/rooms", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -64,6 +57,30 @@ public class RoomsController {
         return ResponseEntity.ok(bedroomResource);
     }
 
+    @PutMapping
+    public ResponseEntity<BookingResource> updateBooking(@RequestBody UpdateBookingResource resource)
+    {
+        var booking = bookingCommandService.handle(UpdateBookingCommandFromResourceAssembler.toCommandFromResource(resource));
+
+        if (booking.isEmpty()) return ResponseEntity.badRequest().build();
+
+        var bookingResource = BookingResourceFromEntityAssembler.toResourceFromEntity(booking.get());
+
+        return ResponseEntity.ok(bookingResource);
+    }
+
+    @PutMapping
+    public ResponseEntity<BedroomResource> updateBedroom(@RequestBody UpdateBedroomResource resource)
+    {
+        var bedroom = bedroomCommandService.handle(UpdateBedroomCommandFromResourceAssembler.toCommandFromResource(resource));
+
+        if (bedroom.isEmpty()) return ResponseEntity.badRequest().build();
+
+        var bedroomResource = BedroomResourceFromEntityAssembler.toResourceFromEntity(bedroom.get());
+
+        return ResponseEntity.ok(bedroomResource);
+    }
+
     @GetMapping
     public ResponseEntity<List<BookingResource>> getAllBookings()
     {
@@ -86,5 +103,29 @@ public class RoomsController {
                 .toList();
 
         return ResponseEntity.ok(bedroomResources);
+    }
+
+    @GetMapping("/{bookingId}")
+    public ResponseEntity<BookingResource> getBookingById(@PathVariable Long bookingId)
+    {
+        var booking = bookingQueryService.handle(new GetBookingByIdQuery(bookingId));
+
+        if (booking.isEmpty()) return ResponseEntity.badRequest().build();
+
+        var bookingResource = BookingResourceFromEntityAssembler.toResourceFromEntity(booking.get());
+
+        return ResponseEntity.ok(bookingResource);
+    }
+
+    @GetMapping("/{bedroomId}")
+    public ResponseEntity<BedroomResource> getBedroomById(@PathVariable Long bedroomId)
+    {
+        var bedroom = bedroomQueryService.handle(new GetBedroomByIdQuery(bedroomId));
+
+        if (bedroom.isEmpty()) return ResponseEntity.badRequest().build();
+
+        var bedroomResource = BedroomResourceFromEntityAssembler.toResourceFromEntity(bedroom.get());
+
+        return ResponseEntity.ok(bedroomResource);
     }
 }

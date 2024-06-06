@@ -54,12 +54,12 @@ public class RoomsContextFacade {
         return booking.get().getId();
     }
 
-    public Optional<Booking> fetchBookingById(Long id)
+    public Optional<Booking> fetchBookingById(Long bookingId)
     {
-        return bookingQueryService.handle(new GetBookingByIdQuery(id));
+        return bookingQueryService.handle(new GetBookingByIdQuery(bookingId));
     }
-    public Optional<Bedroom> fetchBedroomById(Long id)
+    public Optional<Bedroom> fetchBedroomById(Long bedroomId)
     {
-        return bedroomQueryService.handle(new GetBedroomByIdQuery(id));
+        return bedroomQueryService.handle(new GetBedroomByIdQuery(bedroomId));
     }
 }
