@@ -22,14 +22,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class WebSecurityConfiguration {
     private final UserDetailsService userDetailsService;
-
     private final BearerTokenService tokenService;
-
     private final BCryptHashingService hashingService;
-
     private final AuthenticationEntryPoint unauthorizedRequestHandler;
 
-    public WebSecurityConfiguration(@Qualifier("defaultUserDetailsService")UserDetailsService userDetailsService, BearerTokenService tokenService, BCryptHashingService hashingService, AuthenticationEntryPoint unauthorizedRequestHandler) {
+    public WebSecurityConfiguration(@Qualifier("defaultUserDetailsService") UserDetailsService userDetailsService, BearerTokenService tokenService, BCryptHashingService hashingService, AuthenticationEntryPoint unauthorizedRequestHandler) {
         this.userDetailsService = userDetailsService;
         this.tokenService = tokenService;
         this.hashingService = hashingService;
@@ -78,4 +75,5 @@ public class WebSecurityConfiguration {
         http.addFilterBefore(authorizationRequestFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+
 }
