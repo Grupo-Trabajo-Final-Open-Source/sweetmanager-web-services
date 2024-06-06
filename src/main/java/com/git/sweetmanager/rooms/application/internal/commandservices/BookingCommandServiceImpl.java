@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class BookingCommandServiceImpl implements BookingCommandService {
 
-    private final BookingRepository bookingRepository;
+    private BookingRepository bookingRepository;
 
     public BookingCommandServiceImpl(BookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
@@ -29,8 +29,8 @@ public class BookingCommandServiceImpl implements BookingCommandService {
     @Override
     public Optional<Booking> handle(UpdateBookingCommand command) {
 
-        bookingRepository.save(new Booking());
+        bookingRepository.save(new Booking(command));
 
-        return Optional.of(new Booking());
+        return Optional.of(new Booking(command));
     }
 }

@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class BedroomQueryServiceImpl implements BedroomQueryService {
 
-    private final BedroomRepository bedroomRepository;
+    private BedroomRepository bedroomRepository;
 
     public BedroomQueryServiceImpl(BedroomRepository bedroomRepository) {
         this.bedroomRepository = bedroomRepository;
@@ -28,6 +28,6 @@ public class BedroomQueryServiceImpl implements BedroomQueryService {
     @Override
     public Optional<Bedroom> handle(GetBedroomByIdQuery query) {
 
-        return null;
+        return bedroomRepository.findById(query.bedroomId());
     }
 }

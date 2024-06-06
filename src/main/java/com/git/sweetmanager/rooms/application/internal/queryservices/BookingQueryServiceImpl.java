@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class BookingQueryServiceImpl implements BookingQueryService {
 
-    private final BookingRepository bookingRepository;
+    private BookingRepository bookingRepository;
 
     public BookingQueryServiceImpl(BookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
@@ -26,6 +26,6 @@ public class BookingQueryServiceImpl implements BookingQueryService {
 
     @Override
     public Optional<Booking> handle(GetBookingByIdQuery query) {
-        return Optional.empty();
+        return bookingRepository.findById(query.bookingId());
     }
 }

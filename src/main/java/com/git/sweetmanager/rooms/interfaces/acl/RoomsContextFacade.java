@@ -18,10 +18,10 @@ import java.util.Optional;
 @Service
 public class RoomsContextFacade {
 
-    private final BedroomCommandService bedroomCommandService;
-    private final BedroomQueryService bedroomQueryService;
-    private final BookingCommandService bookingCommandService;
-    private final BookingQueryService bookingQueryService;
+    private BedroomCommandService bedroomCommandService;
+    private BedroomQueryService bedroomQueryService;
+    private BookingCommandService bookingCommandService;
+    private BookingQueryService bookingQueryService;
 
     public RoomsContextFacade(BookingCommandService bookingCommandService,
                               BookingQueryService bookingQueryService,

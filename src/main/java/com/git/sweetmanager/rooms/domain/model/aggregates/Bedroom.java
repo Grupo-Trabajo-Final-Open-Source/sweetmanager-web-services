@@ -1,18 +1,19 @@
 package com.git.sweetmanager.rooms.domain.model.aggregates;
 
 import com.git.sweetmanager.rooms.domain.model.commands.CreateBedroomCommand;
+import com.git.sweetmanager.rooms.domain.model.commands.UpdateBedroomCommand;
 import com.git.sweetmanager.shared.domain.aggregates.AuditableAbstractAggregateRoot;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "bedrooms")
 public class Bedroom extends AuditableAbstractAggregateRoot<Bedroom> {
 
-    private final int typeBedroomId;
-    private final int workerId;
-    private final int totalBeds;
-    private final int totalBathroom;
-    private final int totalTelevision;
-    private final String state;
+    private int typeBedroomId;
+    private int workerId;
+    private int totalBeds;
+    private int totalBathroom;
+    private int totalTelevision;
+    private String state;
 
     public Bedroom()
     {
@@ -34,6 +35,15 @@ public class Bedroom extends AuditableAbstractAggregateRoot<Bedroom> {
     }
 
     public Bedroom(CreateBedroomCommand command)
+    {
+        this.typeBedroomId = command.typeBedroomId();
+        this.workerId = command.workerId();
+        this.totalBeds = command.totalBeds();
+        this.totalBathroom = command.totalBathroom();
+        this.totalTelevision = command.totalTelevision();
+        this.state = command.state();
+    }
+    public Bedroom(UpdateBedroomCommand command)
     {
         this.typeBedroomId = command.typeBedroomId();
         this.workerId = command.workerId();
