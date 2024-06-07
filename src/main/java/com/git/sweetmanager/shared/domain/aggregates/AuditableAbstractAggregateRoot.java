@@ -1,5 +1,8 @@
 package com.git.sweetmanager.shared.domain.aggregates;
 
+import com.git.sweetmanager.shared.domain.services.SequenceGeneratorService;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.AbstractAggregateRoot;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,6 +16,8 @@ import java.util.Date;
 public class AuditableAbstractAggregateRoot<T extends AbstractAggregateRoot<T>>extends AbstractAggregateRoot<T> {
 
     @Id
+    @Getter
+    @Setter
     private Long id;
 
     @CreatedDate
@@ -20,4 +25,5 @@ public class AuditableAbstractAggregateRoot<T extends AbstractAggregateRoot<T>>e
 
     @LastModifiedDate
     private Date updatedAt;
+
 }
