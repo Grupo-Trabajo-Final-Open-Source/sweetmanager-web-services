@@ -10,6 +10,7 @@ import com.git.sweetmanager.rooms.domain.services.BookingCommandService;
 import com.git.sweetmanager.rooms.domain.services.BookingQueryService;
 import com.git.sweetmanager.rooms.interfaces.rest.resources.*;
 import com.git.sweetmanager.rooms.interfaces.rest.transform.*;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/rooms", produces = MediaType.APPLICATION_JSON_VALUE)
+@Tag(name="Rooms", description = "Rooms Management Endpoints")
 public class RoomsController {
 
     private final BookingCommandService bookingCommandService;
@@ -33,7 +35,7 @@ public class RoomsController {
         this.bedroomQueryService = bedroomQueryService;
     }
 
-    @PostMapping
+    @PostMapping("/bookings")
     public ResponseEntity<BookingResource> createBooking(@RequestBody CreateBookingResource resource)
     {
         var booking = bookingCommandService.handle(CreateBookingCommandFromResourceAssembler.toCommandFromResource(resource));
@@ -45,7 +47,7 @@ public class RoomsController {
         return ResponseEntity.ok(bookingResource);
     }
 
-    @PostMapping
+    @PostMapping("/bedrooms")
     public ResponseEntity<BedroomResource> createBedroom(@RequestBody CreateBedroomResource resource)
     {
         var bedroom = bedroomCommandService.handle(CreateBedroomCommandFromResourceAssembler.toCommandFromResource(resource));
@@ -57,7 +59,7 @@ public class RoomsController {
         return ResponseEntity.ok(bedroomResource);
     }
 
-    @PutMapping
+    @PutMapping("/bookings")
     public ResponseEntity<BookingResource> updateBooking(@RequestBody UpdateBookingResource resource)
     {
         var booking = bookingCommandService.handle(UpdateBookingCommandFromResourceAssembler.toCommandFromResource(resource));
@@ -69,7 +71,7 @@ public class RoomsController {
         return ResponseEntity.ok(bookingResource);
     }
 
-    @PutMapping
+    @PutMapping("/bedrooms")
     public ResponseEntity<BedroomResource> updateBedroom(@RequestBody UpdateBedroomResource resource)
     {
         var bedroom = bedroomCommandService.handle(UpdateBedroomCommandFromResourceAssembler.toCommandFromResource(resource));
@@ -81,7 +83,7 @@ public class RoomsController {
         return ResponseEntity.ok(bedroomResource);
     }
 
-    @GetMapping
+    @GetMapping("/bookings")
     public ResponseEntity<List<BookingResource>> getAllBookings()
     {
         var bookings = bookingQueryService.handle(new GetAllBookingsQuery());
@@ -93,7 +95,7 @@ public class RoomsController {
         return ResponseEntity.ok(bookingResources);
     }
 
-    @GetMapping
+    @GetMapping("/bedrooms")
     public ResponseEntity<List<BedroomResource>> getAllBedrooms()
     {
         var bedrooms = bedroomQueryService.handle(new GetAllBedroomsQuery());
