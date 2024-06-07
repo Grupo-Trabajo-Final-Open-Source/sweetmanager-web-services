@@ -1,6 +1,6 @@
 package com.git.sweetmanager.profile.application.internal.commandservices.company;
 
-import com.git.sweetmanager.profile.domain.model.aggregates.Company;
+import com.git.sweetmanager.profile.domain.model.aggregates.Companie;
 import com.git.sweetmanager.profile.domain.model.commands.company.CreateCompanyCommand;
 import com.git.sweetmanager.profile.domain.services.company.CompanyCommandService;
 import com.git.sweetmanager.profile.infrastructure.persistence.mongo.repositories.company.CompanyRepository;
@@ -17,13 +17,13 @@ public class CompanyCommandServiceImpl implements CompanyCommandService {
     }
 
     @Override
-    public Optional<Company> handle(CreateCompanyCommand command) {
+    public Optional<Companie> handle(CreateCompanyCommand command) {
         if(command.businessName() == null || command.businessName().isEmpty())
             throw new IllegalArgumentException("Business Name is required");
         if(command.ruc() == null || command.ruc().isEmpty())
             throw new IllegalArgumentException("RUC is required");
 
-        var company = new Company(command);
+        var company = new Companie(command);
 
         companyRepository.save(company);
 

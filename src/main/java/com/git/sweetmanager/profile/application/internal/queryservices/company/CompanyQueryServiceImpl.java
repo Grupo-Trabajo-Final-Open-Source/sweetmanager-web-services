@@ -1,6 +1,6 @@
 package com.git.sweetmanager.profile.application.internal.queryservices.company;
 
-import com.git.sweetmanager.profile.domain.model.aggregates.Company;
+import com.git.sweetmanager.profile.domain.model.aggregates.Companie;
 import com.git.sweetmanager.profile.domain.model.queries.company.GetAllCompaniesQuery;
 import com.git.sweetmanager.profile.domain.model.queries.company.GetCompanyByIdQuery;
 import com.git.sweetmanager.profile.domain.services.company.CompanyQueryService;
@@ -20,12 +20,12 @@ public class CompanyQueryServiceImpl implements CompanyQueryService {
     }
 
     @Override
-    public List<Company> handle(GetAllCompaniesQuery query) {
+    public List<Companie> handle(GetAllCompaniesQuery query) {
         return companyRepository.findAll();
     }
 
     @Override
-    public Optional<Company> handle(GetCompanyByIdQuery query) {
+    public Optional<Companie> handle(GetCompanyByIdQuery query) {
         return companyRepository.findById(query.companyId());
     }
 }

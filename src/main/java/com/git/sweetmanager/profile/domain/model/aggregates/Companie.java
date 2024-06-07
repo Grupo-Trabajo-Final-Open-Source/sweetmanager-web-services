@@ -5,24 +5,24 @@ import com.git.sweetmanager.shared.domain.aggregates.AuditableAbstractAggregateR
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "companies")
-public class Company extends AuditableAbstractAggregateRoot<Company> {
+public class Companie extends AuditableAbstractAggregateRoot<Companie> {
 
     // Attributes
     private String businessName;
     private String ruc;
 
     // Constructors
-    public Company(String businessName, String ruc){
+    public Companie(String businessName, String ruc){
         this.businessName = businessName;
         this.ruc = ruc;
     }
 
-    public Company(CreateCompanyCommand command) {
+    public Companie(CreateCompanyCommand command) {
         this.businessName = command.businessName();
         this.ruc = command.ruc();
     }
 
-    public Company(){
+    public Companie(){
 
     }
 
