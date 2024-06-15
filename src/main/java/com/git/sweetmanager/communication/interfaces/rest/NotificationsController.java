@@ -41,7 +41,7 @@ public class NotificationsController {
 
         var notificationResource = NotificationResourceFromEntityAssembler.toResourceFromEntity(notification.get());
 
-        return new ResponseEntity<>(notificationResource, HttpStatus.CREATED);
+        return ResponseEntity.ok(notificationResource);
     }
 
     @GetMapping("/{notificationId}")

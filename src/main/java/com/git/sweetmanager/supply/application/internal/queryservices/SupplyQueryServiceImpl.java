@@ -1,6 +1,6 @@
 package com.git.sweetmanager.supply.application.internal.queryservices;
 
-import com.git.sweetmanager.supply.domain.model.aggregates.Supply;
+import com.git.sweetmanager.supply.domain.model.aggregates.Supplie;
 import com.git.sweetmanager.supply.domain.model.queries.GetAllSuppliesQuery;
 import com.git.sweetmanager.supply.domain.model.queries.GetSupplyByIdQuery;
 import com.git.sweetmanager.supply.domain.services.SupplyQueryService;
@@ -17,11 +17,11 @@ public class SupplyQueryServiceImpl implements SupplyQueryService {
         this.supplyRepository = supplyRepository;
     }
     @Override
-    public List<Supply> handle(GetAllSuppliesQuery query) {
+    public List<Supplie> handle(GetAllSuppliesQuery query) {
         return supplyRepository.findAll();
     }
     @Override
-    public Optional<Supply> handle(GetSupplyByIdQuery query) {
+    public Optional<Supplie> handle(GetSupplyByIdQuery query) {
         return supplyRepository.findById(query.id());
     }
 }

@@ -1,6 +1,6 @@
 package com.git.sweetmanager.supply.application.internal.commandservices;
 
-import com.git.sweetmanager.supply.domain.model.aggregates.Supply;
+import com.git.sweetmanager.supply.domain.model.aggregates.Supplie;
 import com.git.sweetmanager.supply.domain.model.commands.CreateSupplyCommand;
 import com.git.sweetmanager.supply.domain.services.SupplyCommandService;
 import com.git.sweetmanager.supply.infrastructure.persistence.mongo.repositories.SupplyRepository;
@@ -15,7 +15,7 @@ public class SupplyCommandServiceImpl implements SupplyCommandService {
         this.supplyRepository = supplyRepository;
     }
     @Override
-    public Optional<Supply> handle(CreateSupplyCommand command) {
+    public Optional<Supplie> handle(CreateSupplyCommand command) {
         if(command.product() == null || command.product().isEmpty())
             throw new IllegalArgumentException("Product is required");
         if(command.quantity() == null)
@@ -25,7 +25,7 @@ public class SupplyCommandServiceImpl implements SupplyCommandService {
         if(command.expire() == null)
             throw new IllegalArgumentException("Expire date is required");
 
-        var supply = new Supply(command);
+        var supply = new Supplie(command);
         supplyRepository.save(supply);
         return Optional.empty();
     }

@@ -5,7 +5,7 @@ import com.git.sweetmanager.supply.domain.model.commands.CreateSupplyCommand;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "supplies")
-public class Supply extends AuditableAbstractAggregateRoot<Supply> {
+public class Supplie extends AuditableAbstractAggregateRoot<Supplie> {
     // Attributes
     private String product;
     private Number quantity;
@@ -13,13 +13,18 @@ public class Supply extends AuditableAbstractAggregateRoot<Supply> {
     private String expire;
 
     // Constructors
-    public Supply(String product, Number quantity, String address, String expire) {
+
+    public Supplie(){
+
+    }
+
+    public Supplie(String product, Number quantity, String address, String expire) {
         this.product = product;
         this.quantity = quantity;
         this.address = address;
         this.expire = expire;
     }
-    public Supply(CreateSupplyCommand command) {
+    public Supplie(CreateSupplyCommand command) {
         this.product = command.product();
         this.quantity = command.quantity();
         this.address = command.address();

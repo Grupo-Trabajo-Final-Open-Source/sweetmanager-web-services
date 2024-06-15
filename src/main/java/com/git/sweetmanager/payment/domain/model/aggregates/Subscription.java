@@ -16,6 +16,9 @@ public class Subscription extends AuditableAbstractAggregateRoot<Subscription> {
 
     // Constructors
 
+    public Subscription() {
+    }
+
     public Subscription(String title, Double price, String description) {
         this.title = title;
         this.price = price;
