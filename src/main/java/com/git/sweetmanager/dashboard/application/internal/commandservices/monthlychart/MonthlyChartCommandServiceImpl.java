@@ -27,6 +27,6 @@ public class MonthlyChartCommandServiceImpl implements MonthlyChartCommandServic
 
         monthlyChartRepository.save(monthlyChart);
 
-        return Optional.empty();
+        return Optional.of(monthlyChart);
     }
 }

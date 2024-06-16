@@ -4,8 +4,10 @@ import com.git.sweetmanager.rooms.domain.model.commands.CreateBookingCommand;
 import com.git.sweetmanager.rooms.domain.model.commands.UpdateBookingCommand;
 import com.git.sweetmanager.shared.domain.aggregates.AuditableAbstractAggregateRoot;
 import lombok.Getter;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Document(collection = "bookings")
@@ -13,23 +15,17 @@ public class Booking extends AuditableAbstractAggregateRoot<Booking> {
 
     private int clientId;
     private int bedroomId;
-    private Date startDate;
-    private Date finalDate;
+    private LocalDate startDate;
+    private LocalDate finalDate;
     private float totalPrice;
     private String state;
 
     public Booking()
     {
-        this.clientId = 0;
-        this.bedroomId = 0;
-        this.startDate = new Date();
-        this.finalDate = new Date();
-        this.totalPrice = 0;
-        this.state = "";
     }
 
     public Booking(int clientId, int bedroomId,
-                   Date startDate, Date finalDate,
+                   LocalDate startDate, LocalDate finalDate,
                    float totalPrice, String state)
     {
         this.clientId = clientId;
@@ -57,8 +53,8 @@ public class Booking extends AuditableAbstractAggregateRoot<Booking> {
 
     public int GetClientId() { return clientId; }
     public int GetBedroomId() { return bedroomId; }
-    public Date GetStartDate() { return startDate; }
-    public Date GetFinalDate() { return finalDate; }
+    public LocalDate GetStartDate() { return startDate; }
+    public LocalDate GetFinalDate() { return finalDate; }
     public float GetTotalPrice() { return totalPrice; }
     public String GetState() { return state; }
 }

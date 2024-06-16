@@ -31,6 +31,6 @@ public class CustomerCommandServiceImpl implements CustomerCommandService {
 
         customerRepository.save(customer);
 
-        return Optional.empty();
+        return Optional.of(customer);
     }
 }

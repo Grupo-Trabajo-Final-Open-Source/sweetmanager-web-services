@@ -29,6 +29,6 @@ public class NotificationCommandServiceImpl implements NotificationCommandServic
 
         notificationRepository.save(notification);
 
-        return Optional.empty();
+        return Optional.of(notification);
     }
 }

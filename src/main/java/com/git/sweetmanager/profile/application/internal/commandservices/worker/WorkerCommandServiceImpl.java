@@ -33,6 +33,6 @@ public class WorkerCommandServiceImpl implements WorkerCommandService {
 
         workerRepository.save(worker);
 
-        return Optional.empty();
+        return Optional.of(worker);
     }
 }

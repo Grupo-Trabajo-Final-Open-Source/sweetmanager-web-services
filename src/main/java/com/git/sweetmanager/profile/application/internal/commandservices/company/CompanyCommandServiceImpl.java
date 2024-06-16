@@ -27,6 +27,6 @@ public class CompanyCommandServiceImpl implements CompanyCommandService {
 
         companyRepository.save(company);
 
-        return Optional.empty();
+        return Optional.of(company);
     }
 }

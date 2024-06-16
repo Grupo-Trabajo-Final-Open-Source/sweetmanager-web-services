@@ -31,6 +31,6 @@ public class ProviderCommandServiceImpl implements ProviderCommandService {
 
         providerRepository.save(provider);
 
-        return Optional.empty();
+        return Optional.of(provider);
     }
 }

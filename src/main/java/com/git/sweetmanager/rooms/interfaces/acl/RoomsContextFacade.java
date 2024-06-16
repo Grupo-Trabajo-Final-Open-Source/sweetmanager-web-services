@@ -12,6 +12,7 @@ import com.git.sweetmanager.rooms.domain.services.BookingCommandService;
 import com.git.sweetmanager.rooms.domain.services.BookingQueryService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
@@ -44,7 +45,7 @@ public class RoomsContextFacade {
     }
 
     public Long createBooking(int clientId, int bedroomId,
-                              Date startDate, Date finalDate,
+                              LocalDate startDate, LocalDate finalDate,
                               float totalPrice, String state) {
 
         var booking = bookingCommandService.handle(new CreateBookingCommand(clientId, bedroomId, startDate, finalDate, totalPrice, state));

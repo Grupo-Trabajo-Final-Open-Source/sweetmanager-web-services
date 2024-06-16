@@ -27,6 +27,6 @@ public class SupplyCommandServiceImpl implements SupplyCommandService {
 
         var supply = new Supplie(command);
         supplyRepository.save(supply);
-        return Optional.empty();
+        return Optional.of(supply);
     }
 }

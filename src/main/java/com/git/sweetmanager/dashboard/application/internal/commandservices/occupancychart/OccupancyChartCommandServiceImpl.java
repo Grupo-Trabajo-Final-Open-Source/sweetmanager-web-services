@@ -27,6 +27,6 @@ public class OccupancyChartCommandServiceImpl implements OccupancyChartCommandSe
 
         occupancyChartRepository.save(occupancyChart);
 
-        return Optional.empty();
+        return Optional.of(occupancyChart);
     }
 }
