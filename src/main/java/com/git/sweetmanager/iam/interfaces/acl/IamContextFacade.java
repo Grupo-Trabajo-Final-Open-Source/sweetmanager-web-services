@@ -35,8 +35,8 @@ public class IamContextFacade {
      * @param password The password of the user.
      * @return The id of the created user.
      */
-    public Long createUser(String name, String email, String password) {
-        var signUpCommand = new SignUpCommand(name, email, password, List.of(Role.getDefaultRole()));
+    public Long createUser(String name, String email, String password, int companyId) {
+        var signUpCommand = new SignUpCommand(name, email, password, List.of(Role.getDefaultRole()), companyId);
         var result = userCommandService.handle(signUpCommand);
         if (result.isEmpty()) return 0L;
         return result.get().getId();
@@ -49,9 +49,9 @@ public class IamContextFacade {
      * @param roleNames The names of the roles of the user. When a role does not exist, it is ignored.
      * @return The id of the created user.
      */
-    public Long createUser(String name, String email, String password, List<String> roleNames) {
+    public Long createUser(String name, String email, String password, List<String> roleNames, int companyId) {
         var roles = roleNames != null ? roleNames.stream().map(Role::toRoleFromName).toList() : new ArrayList<Role>();
-        var signUpCommand = new SignUpCommand(name ,email, password, roles);
+        var signUpCommand = new SignUpCommand(name ,email, password, roles, companyId);
         var result = userCommandService.handle(signUpCommand);
         if (result.isEmpty()) return 0L;
         return result.get().getId();

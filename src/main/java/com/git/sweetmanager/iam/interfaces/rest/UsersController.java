@@ -1,6 +1,7 @@
 package com.git.sweetmanager.iam.interfaces.rest;
 
 import com.git.sweetmanager.iam.domain.model.queries.GetAllUsersQuery;
+import com.git.sweetmanager.iam.domain.model.queries.GetUserByCompanyIdQuery;
 import com.git.sweetmanager.iam.domain.model.queries.GetUserByIdQuery;
 import com.git.sweetmanager.iam.domain.services.UserQueryService;
 import com.git.sweetmanager.iam.interfaces.rest.resources.UserResource;
@@ -55,6 +56,25 @@ public class UsersController {
     public ResponseEntity<UserResource> getUserById(@PathVariable Long userId) {
         var getUserByIdQuery = new GetUserByIdQuery(userId);
         var user = userQueryService.handle(getUserByIdQuery);
+        if (user.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        var userResource = UserResourceFromEntityAssembler.toResourceFromEntity(user.get());
+        return ResponseEntity.ok(userResource);
+    }
+
+    /**
+     * This method returns the user with the given id.
+     * @param companyId
+     * the company id
+     * @return the user resource with the given id
+     * @throws RuntimeException if the user is not found
+     * @see UserResource
+     */
+    @GetMapping(value = "/{companyId}")
+    public ResponseEntity<UserResource> getUserById(@PathVariable int companyId) {
+        var getUserByCompanyIdQuery = new GetUserByCompanyIdQuery(companyId);
+        var user = userQueryService.handle(getUserByCompanyIdQuery);
         if (user.isEmpty()) {
             return ResponseEntity.notFound().build();
         }

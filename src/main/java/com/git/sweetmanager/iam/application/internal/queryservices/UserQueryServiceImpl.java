@@ -2,6 +2,7 @@ package com.git.sweetmanager.iam.application.internal.queryservices;
 
 import com.git.sweetmanager.iam.domain.model.aggregates.User;
 import com.git.sweetmanager.iam.domain.model.queries.GetAllUsersQuery;
+import com.git.sweetmanager.iam.domain.model.queries.GetUserByCompanyIdQuery;
 import com.git.sweetmanager.iam.domain.model.queries.GetUserByEmailQuery;
 import com.git.sweetmanager.iam.domain.model.queries.GetUserByIdQuery;
 import com.git.sweetmanager.iam.domain.services.UserQueryService;
@@ -32,5 +33,10 @@ public class UserQueryServiceImpl implements UserQueryService {
     @Override
     public Optional<User> handle(GetUserByEmailQuery query) {
         return userRepository.findByEmail(query.emailUser());
+    }
+
+    @Override
+    public Optional<User> handle(GetUserByCompanyIdQuery query) {
+        return userRepository.findByCompanyId(query.companyId());
     }
 }
