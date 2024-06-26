@@ -2,5 +2,5 @@ services:
   swmapiservices:
     build: ./
     ports:
-      - "3453:8080"
+      - "3453:3453"
     restart: always

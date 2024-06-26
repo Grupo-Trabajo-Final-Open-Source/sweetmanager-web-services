@@ -15,6 +15,6 @@ FROM openjdk:21-jdk-slim
 
 COPY --from=build /app/target/sweetmanager-0.0.1-SNAPSHOT.jar app.jar
 
-EXPOSE 8080
+EXPOSE 3453
 
 ENTRYPOINT ["java","-jar","/app.jar"]
