@@ -45,6 +45,7 @@ public class Bedroom extends AuditableAbstractAggregateRoot<Bedroom> {
     }
     public Bedroom(UpdateBedroomCommand command)
     {
+        this.setId(command.id());
         this.typeBedroomId = command.typeBedroomId();
         this.workerId = command.workerId();
         this.totalBeds = command.totalBeds();
