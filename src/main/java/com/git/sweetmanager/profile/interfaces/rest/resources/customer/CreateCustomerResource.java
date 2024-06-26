@@ -1,4 +1,4 @@
 package com.git.sweetmanager.profile.interfaces.rest.resources.customer;
 
-public record CreateCustomerResource(String name, String DNI, int age, String email) {
+public record CreateCustomerResource(String name, String email, String phoneNumber, String reservationDate, String reservationTime, double cost) {
 }

@@ -5,6 +5,14 @@ import com.git.sweetmanager.profile.interfaces.rest.resources.customer.CustomerR
 
 public class CustomerResourceFromEntityAssembler {
     public static CustomerResource toResourceFromEntity(Customer entity) {
-        return new CustomerResource(entity.getId(), entity.getName(), entity.getDni(), entity.getAge(), entity.getEmail());
+        return new CustomerResource(
+                entity.getId(),
+                entity.getName(),
+                entity.getEmail(),
+                entity.getPhoneNumber(),
+                entity.getReservationDate(),
+                entity.getReservationTime(),
+                entity.getCost()
+        );
     }
 }
