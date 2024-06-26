@@ -7,8 +7,11 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class OpenApiConfiguration {
@@ -27,6 +30,15 @@ public class OpenApiConfiguration {
                         .description("Sweet Manager Platform Wiki Documentation")
                         .url("https://sweetmanager-platform.wiki.github.io/docs"));
 
+
+          openAPI.servers(List.of
+                  (new Server()
+                    .url("http://localhost:3453")
+                    .description("Localhost Server"),
+                new Server()
+                        .url("https://sweetmanagerapi.ryzeon.me")
+                        .description("Deploy Server")
+          ));
 
         // Add security scheme
 
