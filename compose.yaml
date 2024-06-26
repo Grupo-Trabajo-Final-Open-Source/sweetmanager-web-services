@@ -2,5 +2,5 @@ services:
   sweetmanager-web-services:
     build: ./
     ports:
-      - "80:8080"
+      - "3453:8080"
     restart: always
