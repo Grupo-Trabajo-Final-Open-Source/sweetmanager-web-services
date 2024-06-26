@@ -5,6 +5,13 @@ import com.git.sweetmanager.profile.interfaces.rest.resources.customer.CreateCus
 
 public class CreateCustomerCommandFromResourceAssembler {
     public static CreateCustomerCommand toCommandFromResource(CreateCustomerResource resource) {
-        return new CreateCustomerCommand(resource.name(), resource.DNI(), resource.age(), resource.email());
+        return new CreateCustomerCommand(
+                resource.name(),
+                resource.email(),
+                resource.phoneNumber(),
+                resource.reservationDate(),
+                resource.reservationTime(),
+                resource.cost()
+        );
     }
 }
