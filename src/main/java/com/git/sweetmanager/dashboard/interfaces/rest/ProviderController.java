@@ -1,13 +1,16 @@
 package com.git.sweetmanager.dashboard.interfaces.rest;
 
+import com.git.sweetmanager.dashboard.domain.model.commands.provider.DeleteProviderCommand;
 import com.git.sweetmanager.dashboard.domain.model.queries.provider.GetAllProvidersQuery;
 import com.git.sweetmanager.dashboard.domain.model.queries.provider.GetProviderByIdQuery;
 import com.git.sweetmanager.dashboard.domain.services.provider.ProviderCommandService;
 import com.git.sweetmanager.dashboard.domain.services.provider.ProviderQueryService;
 import com.git.sweetmanager.dashboard.interfaces.rest.resources.provider.CreateProviderResource;
 import com.git.sweetmanager.dashboard.interfaces.rest.resources.provider.ProviderResource;
+import com.git.sweetmanager.dashboard.interfaces.rest.resources.provider.UpdateProviderResource;
 import com.git.sweetmanager.dashboard.interfaces.rest.transform.provider.CreateProviderCommandFromResourceAssembler;
 import com.git.sweetmanager.dashboard.interfaces.rest.transform.provider.ProviderResourceFromEntityAssembler;
+import com.git.sweetmanager.dashboard.interfaces.rest.transform.provider.UpdateProviderCommandFromResourceAssembler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +37,22 @@ public class ProviderController {
         if(provider.isEmpty()) return ResponseEntity.badRequest().build();
         var providerResource = ProviderResourceFromEntityAssembler.toResourceFromEntity(provider.get());
         return new ResponseEntity<>(providerResource, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/providers")
+    public ResponseEntity<ProviderResource> updateProvider(@RequestBody UpdateProviderResource resource){
+        var updateProviderCommand = UpdateProviderCommandFromResourceAssembler.toCommandFromResource(resource);
+        var provider = providerCommandService.handle(updateProviderCommand);
+        if(provider.isEmpty()) return ResponseEntity.badRequest().build();
+        var providerResource = ProviderResourceFromEntityAssembler.toResourceFromEntity(provider.get());
+        return new ResponseEntity<>(providerResource, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{providerId}")
+    public ResponseEntity<?> deleteProvider(@PathVariable Long providerId){
+        var deleteProviderCommand = new DeleteProviderCommand(providerId);
+        providerCommandService.handle(deleteProviderCommand);
+        return ResponseEntity.ok("Provider with given id successfully deleted");
     }
 
     @GetMapping("/{providerId}")
