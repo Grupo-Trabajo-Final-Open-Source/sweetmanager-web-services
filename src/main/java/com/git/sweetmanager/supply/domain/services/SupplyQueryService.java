@@ -9,6 +9,5 @@ import java.util.Optional;
 
 public interface SupplyQueryService {
     List<Supplie> handle(GetAllSuppliesQuery query);
-
     Optional<Supplie> handle(GetSupplyByIdQuery query);
 }

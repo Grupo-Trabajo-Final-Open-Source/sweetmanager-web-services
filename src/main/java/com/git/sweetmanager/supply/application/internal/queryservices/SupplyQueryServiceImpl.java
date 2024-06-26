@@ -7,6 +7,7 @@ import com.git.sweetmanager.supply.domain.services.SupplyQueryService;
 import com.git.sweetmanager.supply.infrastructure.persistence.mongo.repositories.SupplyRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +18,7 @@ public class SupplyQueryServiceImpl implements SupplyQueryService {
         this.supplyRepository = supplyRepository;
     }
     @Override
-    public List<Supplie> handle(GetAllSuppliesQuery query) {
-        return supplyRepository.findAll();
-    }
+    public List<Supplie> handle(GetAllSuppliesQuery query) { return supplyRepository.findAll(); }
     @Override
     public Optional<Supplie> handle(GetSupplyByIdQuery query) {
         return supplyRepository.findById(query.id());

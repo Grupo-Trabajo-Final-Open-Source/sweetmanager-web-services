@@ -1,13 +1,16 @@
 package com.git.sweetmanager.supply.interfaces.rest;
 
+import com.git.sweetmanager.supply.domain.model.commands.DeleteSupplyCommand;
 import com.git.sweetmanager.supply.domain.model.queries.GetAllSuppliesQuery;
 import com.git.sweetmanager.supply.domain.model.queries.GetSupplyByIdQuery;
 import com.git.sweetmanager.supply.domain.services.SupplyCommandService;
 import com.git.sweetmanager.supply.domain.services.SupplyQueryService;
 import com.git.sweetmanager.supply.interfaces.rest.resources.CreateSupplyResource;
 import com.git.sweetmanager.supply.interfaces.rest.resources.SupplyResource;
+import com.git.sweetmanager.supply.interfaces.rest.resources.UpdateSupplyResource;
 import com.git.sweetmanager.supply.interfaces.rest.transform.CreateSupplyResourceFromEntityAssembler;
 import com.git.sweetmanager.supply.interfaces.rest.transform.SupplyResourceFromEntityAssembler;
+import com.git.sweetmanager.supply.interfaces.rest.transform.UpdateSupplyResourceFromEntityAssembler;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,6 +42,23 @@ public class SuppliesController {
         return new ResponseEntity<>(supplyResource, HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<SupplyResource> updateSupply(@RequestBody UpdateSupplyResource resource){
+        var updateSupplyCommand = UpdateSupplyResourceFromEntityAssembler.toCommandFromResource(resource);
+        var supply = supplyCommandService.handle(updateSupplyCommand);
+        if (supply.isEmpty()) return ResponseEntity.badRequest().build();
+        var supplyResource = SupplyResourceFromEntityAssembler.toResourceFromEntity(supply.get());
+
+        return new ResponseEntity<>(supplyResource, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{supplyId}")
+    public ResponseEntity<?> deleteSupply(@PathVariable Long supplyId){
+        var deleteSupplyCommand = new DeleteSupplyCommand(supplyId);
+        supplyCommandService.handle(deleteSupplyCommand);
+        return ResponseEntity.ok("Supply deleted successfully");
+    }
+
     @GetMapping("/{supplyId}")
     public ResponseEntity<SupplyResource> getSupplyById(@PathVariable Long supplyId){
         var getSupplyByIdQuery = new GetSupplyByIdQuery(supplyId);
@@ -46,7 +66,7 @@ public class SuppliesController {
         if (supply.isEmpty()) return ResponseEntity.notFound().build();
         var supplyResource = SupplyResourceFromEntityAssembler.toResourceFromEntity(supply.get());
 
-        return ResponseEntity.ok(supplyResource);
+        return new ResponseEntity<>(supplyResource, HttpStatus.OK);
     }
 
     @GetMapping
@@ -57,6 +77,6 @@ public class SuppliesController {
                 .map(SupplyResourceFromEntityAssembler::toResourceFromEntity)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(suppliesResources);
+        return new ResponseEntity<>(suppliesResources, HttpStatus.OK);
     }
 }
