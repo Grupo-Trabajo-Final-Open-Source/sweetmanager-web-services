@@ -1,5 +1,5 @@
 services:
-  sweetmanager-api-services:
+  swmapiservices:
     build: ./
     ports:
       - "3453:8080"
