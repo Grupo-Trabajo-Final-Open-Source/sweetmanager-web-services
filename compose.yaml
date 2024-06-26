@@ -1,5 +1,5 @@
 services:
-  sweetmanager-web-services:
+  sweetmanager-api-services:
     build: ./
     ports:
       - "3453:8080"
