@@ -49,14 +49,14 @@ public class ProviderController {
     }
 
     @DeleteMapping("/delete/{providerId}")
-    public ResponseEntity<?> deleteProvider(@PathVariable Long providerId){
+    public ResponseEntity<?> deleteProvider(@PathVariable long providerId){
         var deleteProviderCommand = new DeleteProviderCommand(providerId);
         providerCommandService.handle(deleteProviderCommand);
         return ResponseEntity.ok("Provider with given id successfully deleted");
     }
 
     @GetMapping("/{providerId}")
-    public ResponseEntity<ProviderResource> getProvider(@PathVariable Long providerId){
+    public ResponseEntity<ProviderResource> getProvider(@PathVariable long providerId){
         var getProviderByIdQuery = new GetProviderByIdQuery(providerId);
         var provider = providerQueryService.handle(getProviderByIdQuery);
         if(provider.isEmpty()) return ResponseEntity.badRequest().build();
