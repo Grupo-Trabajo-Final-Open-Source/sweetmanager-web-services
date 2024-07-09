@@ -2,6 +2,7 @@ package com.git.sweetmanager.supply.domain.model.aggregates;
 
 import com.git.sweetmanager.shared.domain.aggregates.AuditableAbstractAggregateRoot;
 import com.git.sweetmanager.supply.domain.model.commands.CreateSupplyCommand;
+import com.git.sweetmanager.supply.domain.model.commands.UpdateSupplyCommand;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "supplies")
@@ -31,19 +32,15 @@ public class Supplie extends AuditableAbstractAggregateRoot<Supplie> {
         this.expire = command.expire();
     }
 
+    public Supplie(UpdateSupplyCommand command){
+        this.setId(command.id());
+        this.product = command.product();
+        this.quantity = command.quantity();
+        this.address = command.address();
+        this.expire = command.expire();
+    }
+
     // Methods
-    public void updateProduct(String product) {
-        this.product = product;
-    }
-    public void updateQuantity(Number quantity) {
-        this.quantity = quantity;
-    }
-    public void updateAddress(String address) {
-        this.address = address;
-    }
-    public void updateExpire(String expire) {
-        this.expire = expire;
-    }
 
     public String getProduct() {
         return product;
