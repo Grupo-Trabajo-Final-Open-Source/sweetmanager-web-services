@@ -1,7 +1,7 @@
-package com.git.sweetmanager.rooms.interfaces.rest.transform;
+package com.git.sweetmanager.rooms.interfaces.rest.transform.booking;
 
 import com.git.sweetmanager.rooms.domain.model.aggregates.Booking;
-import com.git.sweetmanager.rooms.interfaces.rest.resources.BookingResource;
+import com.git.sweetmanager.rooms.interfaces.rest.resources.booking.BookingResource;
 
 public class BookingResourceFromEntityAssembler {
 

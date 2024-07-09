@@ -1,7 +1,7 @@
-package com.git.sweetmanager.rooms.interfaces.rest.transform;
+package com.git.sweetmanager.rooms.interfaces.rest.transform.booking;
 
 import com.git.sweetmanager.rooms.domain.model.commands.CreateBookingCommand;
-import com.git.sweetmanager.rooms.interfaces.rest.resources.CreateBookingResource;
+import com.git.sweetmanager.rooms.interfaces.rest.resources.booking.CreateBookingResource;
 
 public class CreateBookingCommandFromResourceAssembler {
 

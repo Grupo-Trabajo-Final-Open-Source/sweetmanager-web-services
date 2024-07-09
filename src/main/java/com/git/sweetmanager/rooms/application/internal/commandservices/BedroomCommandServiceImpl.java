@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class BedroomCommandServiceImpl implements BedroomCommandService {
 
-    private BedroomRepository repository;
+    private final BedroomRepository repository;
 
     public BedroomCommandServiceImpl(BedroomRepository repository) {
         this.repository = repository;
@@ -21,16 +21,20 @@ public class BedroomCommandServiceImpl implements BedroomCommandService {
     @Override
     public Optional<Bedroom> handle(CreateBedroomCommand command) {
 
-        repository.save(new Bedroom(command));
+        var bedroom = new Bedroom(command);
 
-        return Optional.of(new Bedroom(command));
+        repository.save(bedroom);
+
+        return Optional.of(bedroom);
     }
 
     @Override
     public Optional<Bedroom> handle(UpdateBedroomCommand command) {
 
-        repository.save(new Bedroom(command));
+        var bedroom = new Bedroom(command);
 
-        return Optional.of(new Bedroom(command));
+        repository.save(bedroom);
+
+        return Optional.of(bedroom);
     }
 }

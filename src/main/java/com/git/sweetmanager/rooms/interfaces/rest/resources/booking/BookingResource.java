@@ -1,4 +1,4 @@
-package com.git.sweetmanager.rooms.interfaces.rest.resources;
+package com.git.sweetmanager.rooms.interfaces.rest.resources.booking;
 
 import org.springframework.cglib.core.Local;
 
