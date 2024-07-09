@@ -39,7 +39,7 @@ public class ProviderController {
         return new ResponseEntity<>(providerResource, HttpStatus.CREATED);
     }
 
-    @PutMapping("/providers")
+    @PutMapping()
     public ResponseEntity<ProviderResource> updateProvider(@RequestBody UpdateProviderResource resource){
         var updateProviderCommand = UpdateProviderCommandFromResourceAssembler.toCommandFromResource(resource);
         var provider = providerCommandService.handle(updateProviderCommand);
@@ -48,7 +48,7 @@ public class ProviderController {
         return new ResponseEntity<>(providerResource, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{providerId}")
+    @DeleteMapping("{providerId}")
     public ResponseEntity<?> deleteProvider(@PathVariable long providerId){
         var deleteProviderCommand = new DeleteProviderCommand(providerId);
         providerCommandService.handle(deleteProviderCommand);
